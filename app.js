@@ -54,7 +54,8 @@ const port=8080;
 
 app.set("view engine","ejs");
 app.set('views', path.join(path.dirname("app.js"), 'views'));
-
+// app.use(express.static('public'));
+// app.use(express.static(path.join(path.dirname('app.js'),'images')));
 app.use(express.static(path.join(path.dirname('app.js'),'public')));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));

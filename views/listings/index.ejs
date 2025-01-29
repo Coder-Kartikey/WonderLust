@@ -1,7 +1,7 @@
 <% title = "" %>
 <% layout("/layouts/boilerplate.ejs") %>
 <body>
-        <h1>All listings</h1>
+        <h1></h1><br>
         <!-- <form action="/listings/new" method="GET">
                 <button>New listing</button>
         </form> -->
@@ -13,7 +13,7 @@
                         <div class="card-body">
                                 <b><%= listing.title %></b> <br>
                                 <%= listing.location %>,<%= listing.country %> <br>
-                                &#8377;<%= listing.price.toLocaleString("en-IN") %> /night<br>
+                                &#8377;<%= listing.price.toLocaleString("en-IN") %> / night<br>
                         </div>
                 </div></a>
                 <% } %>
