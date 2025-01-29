@@ -1,0 +1,146 @@
+
+body{
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container{
+        flex: 1;
+}
+
+/* Navbar */
+
+.navbar {
+        height: 5rem;
+        background-color: white;
+}
+
+.navbar-brand {
+        color: #fe424d;
+        font-size: 1.5rem;
+}
+
+.nav-link{
+        color: #222222;
+}
+
+.new-listing-btn{
+        border: 0px solid white;
+        border-radius: 2rem;
+}
+
+.new-listing-btn:hover{
+        border: 1px solid white;
+        box-shadow: 0px 0px 10px 0px #fe424d;
+        border-radius: 2rem;
+}
+
+/* Footer */
+
+.f-info-links,
+ .f-info-socials,
+ .f-info-brand{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.f-info-links a {
+        text-decoration: none;
+        color: #222222;
+}
+
+.f-info-links a:hover{
+        text-decoration: underline;
+}
+
+.f-info-socials i{
+        margin-right: 1rem;
+        font-size: 1.5rem;
+}
+
+.f-info{
+        background-color: #ebebeb;
+        height: 8rem;
+        text-align: center;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+}
+
+/* Cards */
+
+.listing-card{
+        border: none;
+        margin-bottom: 1rem;
+}
+
+.card-img-top{
+        border-radius: 1rem;
+        width: 100%;
+        object-fit: cover;
+}
+
+.card-img-overlay{
+        opacity: 0;
+}
+
+.card-img-overlay:hover{
+        opacity: 0.2;
+        background-color: white;
+}
+
+.card-body{
+        padding: 0;
+}
+
+.card-text{
+        font-weight: 400;
+}
+
+.listing-link{
+        text-decoration: none;
+}
+
+/* New page */
+
+.add-btn{
+        background-color: #fe424d;
+        margin: 0rem 0rem 1rem 0rem;
+        border: none;
+}
+
+/* Edit page */
+
+.edit-btn{
+        background-color: #fe424d;
+        border: none;
+        margin: 0rem 0rem 1rem 0rem;
+}
+
+.edit-listing-card{
+        border: none;
+        padding-top: 0.5rem;
+}
+
+.edit-listing-card img{
+        width: 50%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+}
+
+/* Show Page */
+
+.show-img{
+        height: 30vh;
+}
+
+.delete-btn{
+        background-color: red;
+        border: none;
+}

@@ -1,0 +1,168 @@
+<% title=" : " +listing.title.toString().toUpperCase() %>
+        <% layout("/layouts/boilerplate.ejs") %>
+                <h2 class="offset-3">
+                        <%= listing.title %>
+                </h2>
+                <div class="row">
+                        <div class="card listing-card col-6 offset-3">
+                                <img src="<%= listing.image.url %>" class="card-img-top show-img mb-2"
+                                        alt="<%= listing.image.filename %>">
+                                <div class="card-body">
+                                        <p class="card-text">
+                                        <div class="">
+                                                <div class="mb-1">
+                                                        <i>Owner : <%= listing.owner.username %></i>
+                                                </div>
+                                                <div class="mb-1">
+                                                        <%= listing.description %>
+                                                </div>
+                                                <div class="mb-1">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                                                </div>
+                                                <div class="mb-1">
+                                                        <%= listing.location %>
+                                                </div>
+                                                <div class="mb-1">
+                                                        <%= listing.country %>
+                                                </div>
+                                        </div>
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+                <% if(currentUser && currentUser._id.equals(listing.owner._id)){ %>
+                        <div class="row">
+                                <div class="col-md-1 offset-3">
+                                        <form action="/listings/<%= listing._id %>/edit" method="get">
+                                                <button class="btn btn-dark btns edit-btn">Edit</button>
+                                        </form>
+                                </div>
+                                <div class="col-md-1 offset-4">
+                                        <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+                                                <button class="btn btn-dark btns delete-btn">Delete</button>
+                                        </form>
+                                </div>
+                        </div>
+                        <% } %>
+
+                                <% if(listing.reviews.length){ %>
+                                        <hr class="col-6 offset-3">
+
+                                        <div>
+                                                <div class="col-6 offset-3">
+                                                        <h3>Reviews</h3>
+                                                        <div class="row">
+                                                                <% for(review of listing.reviews){ %>
+                                                                        <div class="col-5 mb-3 ms-3 px-3 py-2 card ">
+                                                                                <div class="card-body">
+                                                                                        <h7 class="card-title">
+                                                                                                @<%= review.author.username
+                                                                                                        %> 
+                                                                                                        <!-- <i
+                                                                                                                class="fa-solid fa-circle fa-2xs"></i>
+                                                                                                        <%= review.rating%> 
+                                                                                                                <i class="fa-solid fa-star fa-sm"
+                                                                                                                        style="color: #FFD43B;"></i> -->
+                                                                                                                        <p class="starability-result card-text" data-rating="<%= review.rating%>"></p>
+                                                                                        </h7>
+                                                                                        <p class="card-text">
+                                                                                                <%= review.comment %>
+                                                                                        </p>
+                                                                                </div>
+                                                                                <!-- <div class="m-2"> -->
+                                                                                <form class="my-2"
+                                                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                                                        method="post">
+                                                                                        <button
+                                                                                                class="btn btn-dark btn-sm delete-btn">Delete</button>
+                                                                                </form>
+                                                                                <!-- </div> -->
+                                                                        </div>
+                                                                        <% } %>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <% } %>
+
+                                                <% if(currentUser){ %>
+                                                        <hr class="col-6 offset-3">
+
+                                                        <div>
+                                                                <div class="col-6 offset-3">
+                                                                        <h3>Leave a review</h3>
+                                                                        <form action="/listings/<%= listing._id %>/reviews"
+                                                                                method="post" novalidate
+                                                                                class="needs-validation">
+                                                                                <!-- <div class="mb-3">
+                                                <label for="rating" class="form-label">Rating</label>
+                                                <input name="review[rating]" id="rating" required class="form-range"
+                                                        type="range" min="1" max="5">
+                                                <div class="invalid-feedback">Rating is required</div>
+                                        </div> -->
+                                                                                <div>
+                                                                                        <label for="rating"
+                                                                                                class="form-label">Rating</label>
+                                                                                        <fieldset
+                                                                                                class="starability-grow rating ">
+                                                                                                <input type="radio"
+                                                                                                        id="no-rate"
+                                                                                                        class="input-no-rate"
+                                                                                                        name="review[rating]"
+                                                                                                        value="1"
+                                                                                                        checked
+                                                                                                        aria-label="No rating." />
+                                                                                                <input type="radio"
+                                                                                                        id="first-rate1"
+                                                                                                        name="review[rating]"
+                                                                                                        value="1" />
+                                                                                                <label for="first-rate1"
+                                                                                                        title="Terrible">1
+                                                                                                        star</label>
+                                                                                                <input type="radio"
+                                                                                                        id="first-rate2"
+                                                                                                        name="review[rating]"
+                                                                                                        value="2" />
+                                                                                                <label for="first-rate2"
+                                                                                                        title="Not good">2
+                                                                                                        stars</label>
+                                                                                                <input type="radio"
+                                                                                                        id="first-rate3"
+                                                                                                        name="review[rating]"
+                                                                                                        value="3" />
+                                                                                                <label for="first-rate3"
+                                                                                                        title="Average">3
+                                                                                                        stars</label>
+                                                                                                <input type="radio"
+                                                                                                        id="first-rate4"
+                                                                                                        name="review[rating]"
+                                                                                                        value="4" />
+                                                                                                <label for="first-rate4"
+                                                                                                        title="Very good">4
+                                                                                                        stars</label>
+                                                                                                <input type="radio"
+                                                                                                        id="first-rate5"
+                                                                                                        name="review[rating]"
+                                                                                                        value="5" />
+                                                                                                <label for="first-rate5"
+                                                                                                        title="Amazing">5
+                                                                                                        stars</label>
+                                                                                        </fieldset>
+                                                                                        <div class="invalid-feedback">Rating is required</div>
+                                                                                </div>
+                                                                                <div class="mb-3">
+                                                                                        <label for="comment"
+                                                                                                class="form-label">Comment</label>
+                                                                                        <textarea name="review[comment]"
+                                                                                                required
+                                                                                                class="form-control"
+                                                                                                placeholder="Enter Description"
+                                                                                                type="text"></textarea>
+                                                                                        <div class="invalid-feedback">
+                                                                                                Comment is required
+                                                                                        </div>
+                                                                                </div>
+                                                                                <button
+                                                                                        class="btn btn-dark edit-btn">Submit</button>
+                                                                        </form>
+                                                                </div>
+                                                        </div>
+                                                        <% } %>

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+        <div class="container-fluid">
+                <a class="navbar-brand" href="/"><i class="fa-brands fa-airbnb"></i> wonderlust</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                                <!-- <a class="nav-link" aria-current="page" href="/"><button class="btn new-listing-btn mt-2">Home</button>Home</a> -->
+                                <a class="nav-link" href="/listings"><button class="btn new-listing-btn">Explore</button></a>
+                                <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+                        </div>
+                        <div class="navbar-nav ms-auto">
+                                <a class="nav-link" href="/listings/New"><button class="btn new-listing-btn mt-2">Add Your Place</button></a>
+                                <% if(!currentUser){ %>
+                                <a class="nav-link" href="/login"><button class="btn mt-2 new-listing-btn">LogIn</button></a>
+                                <a class="nav-link" href="/signup"><button class="btn btn-dark add-btn mt-2 new-listing-btn">SignUp</button></a>
+                                <% } else{ %>
+                                <a class="nav-link" href="/logout"><button class="btn mt-2 new-listing-btn">LogOut</button></a>
+                                <% } %>
+                        </div>
+                </div>
+        </div>
+</nav>
