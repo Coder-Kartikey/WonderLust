@@ -57,12 +57,12 @@ git clone https://github.com/yourusername/wonderlust.git
 npm install
 
 3. Create a .env file with required environment variables:
-SECRET=your_secret
-CLOUD_NAME=your_cloud_name
-CLOUD_API_KEY=your_api_key
-CLOUD_API_SECRET=your_api_secret
-ATLASDB_URL=your_mongodb_url
-SESSION_SECRET=your_session_secret
+- SECRET=your_secret
+- CLOUD_NAME=your_cloud_name
+- CLOUD_API_KEY=your_api_key
+- CLOUD_API_SECRET=your_api_secret
+- ATLASDB_URL=your_mongodb_url
+- SESSION_SECRET=your_session_secret
 
 4. Start the server
 node app.js
